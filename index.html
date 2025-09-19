@@ -216,6 +216,21 @@
         }
         
         preloadPages();
+
     </script>
+    <script>
+// Automatische Mobile-Erkennung
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    // Mobile Device erkannt - zur Mobile-Version weiterleiten
+    if (window.location.pathname !== '/alab-monitoring-mobile.html') {
+        window.location.href = 'alab-monitoring-mobile.html';
+    }
+} else {
+    // Desktop - zur Desktop-Version weiterleiten
+    if (window.location.pathname !== '/alab-monitoring-professional.html') {
+        window.location.href = 'alab-monitoring-professional.html';
+    }
+}
+</script>
 </body>
 </html>
