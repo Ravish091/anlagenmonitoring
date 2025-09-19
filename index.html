@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALAB Anlagenmonitoring - Wird geladen...</title>
+    <meta name="description" content="Professionelles Anlagenmonitoring für PV-Anlagen mit Live-Daten, Alarmen und Reports.">
+    <meta name="keywords" content="PV-Monitoring, Solaranlagen, Anlagenüberwachung, ALAB Energiesysteme, Photovoltaik">
+    <meta name="author" content="ALAB Energiesysteme">
+    <link rel="icon" type="image/x-icon" href="https://static.wixstatic.com/media/cac2b9_62e2dd76694e43c3810467fa4e633c6c~mv2.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f2533 0%, #1a3a52 100%);
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .loader-container {
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        .loading-text {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
+        
+        .loading-subtitle {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(212, 175, 55, 0.3);
+            border-top: 4px solid #d4af37;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        .device-info {
+            position: absolute;
+            bottom: 20px;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                width: 150px;
+            }
+            
+            .loading-text {
+                font-size: 20px;
+            }
+            
+            .loading-subtitle {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <img src="https://static.wixstatic.com/media/cac2b9_62e2dd76694e43c3810467fa4e633c6c~mv2.png" alt="ALAB Energiesysteme" class="logo">
+        
+        <div class="loading-text">ALAB Monitoring</div>
+        <div class="loading-subtitle">Wird geladen...</div>
+        
+        <div class="spinner"></div>
+    </div>
+    
+    <div class="device-info" id="deviceInfo">
+        Geräteerkennung läuft...
+    </div>
+
+    <script>
+        // Geräteerkennung und automatische Weiterleitung
+        function detectDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(userAgent);
+            const isTablet = /ipad|android(?!.*mobile)/i.test(userAgent);
+            
+            // Device Info anzeigen
+            const deviceInfo = document.getElementById('deviceInfo');
+            
+            if (isMobile && !isTablet) {
+                deviceInfo.textContent = '📱 Mobile Gerät erkannt - Lade mobile Version...';
+                return 'mobile';
+            } else if (isTablet) {
+                deviceInfo.textContent = '📱 Tablet erkannt - Lade Desktop Version...';
+                return 'desktop';
+            } else {
+                deviceInfo.textContent = '🖥️ Desktop erkannt - Lade Desktop Version...';
+                return 'desktop';
+            }
+        }
+        
+        // Weiterleitung nach Geräteerkennung
+        function redirectToVersion() {
+            const deviceType = detectDevice();
+            
+            // Kurze Verzögerung für bessere UX
+            setTimeout(() => {
+                if (deviceType === 'mobile') {
+                    window.location.href = 'alab-monitoring-mobile.html';
+                } else {
+                    window.location.href = 'alab-monitoring-professional.html';
+                }
+            }, 1500); // 1.5 Sekunden Ladezeit
+        }
+        
+        // Fallback für manuelle Navigation
+        function addManualLinks() {
+            setTimeout(() => {
+                const container = document.querySelector('.loader-container');
+                const manualLinks = document.createElement('div');
+                manualLinks.style.marginTop = '30px';
+                manualLinks.innerHTML = `
+                    <div style="font-size: 14px; margin-bottom: 15px; opacity: 0.8;">
+                        Automatische Weiterleitung dauert zu lange?
+                    </div>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="alab-monitoring-professional.html" 
+                           style="background: rgba(212,175,55,0.2); color: #d4af37; padding: 10px 20px; 
+                                  border-radius: 25px; text-decoration: none; font-weight: 600; 
+                                  border: 1px solid rgba(212,175,55,0.5); transition: all 0.3s ease;">
+                            🖥️ Desktop Version
+                        </a>
+                        <a href="alab-monitoring-mobile.html" 
+                           style="background: rgba(212,175,55,0.2); color: #d4af37; padding: 10px 20px; 
+                                  border-radius: 25px; text-decoration: none; font-weight: 600; 
+                                  border: 1px solid rgba(212,175,55,0.5); transition: all 0.3s ease;">
+                            📱 Mobile Version
+                        </a>
+                    </div>
+                `;
+                container.appendChild(manualLinks);
+                
+                // Hover-Effekte für Links
+                const links = manualLinks.querySelectorAll('a');
+                links.forEach(link => {
+                    link.addEventListener('mouseenter', () => {
+                        link.style.background = 'rgba(212,175,55,0.4)';
+                        link.style.transform = 'scale(1.05)';
+                    });
+                    link.addEventListener('mouseleave', () => {
+                        link.style.background = 'rgba(212,175,55,0.2)';
+                        link.style.transform = 'scale(1)';
+                    });
+                });
+            }, 3000); // Nach 3 Sekunden manuelle Links anzeigen
+        }
+        
+        // Initialisierung
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sofortige Weiterleitung starten
+            redirectToVersion();
+            
+            // Fallback-Links nach 3 Sekunden
+            addManualLinks();
+        });
+        
+        // Preload der Zielseiten für bessere Performance
+        function preloadPages() {
+            const desktopLink = document.createElement('link');
+            desktopLink.rel = 'prefetch';
+            desktopLink.href = 'alab-monitoring-professional.html';
+            document.head.appendChild(desktopLink);
+            
+            const mobileLink = document.createElement('link');
+            mobileLink.rel = 'prefetch';
+            mobileLink.href = 'alab-monitoring-mobile.html';
+            document.head.appendChild(mobileLink);
+        }
+        
+        preloadPages();
+    </script>
+</body>
+</html>

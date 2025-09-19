@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ALAB Anlagenmonitoring - Mobile</title>
+    <meta name="description" content="Professionelles Anlagenmonitoring für PV-Anlagen - Mobile optimiert">
+    <meta name="keywords" content="PV-Monitoring, Solaranlagen, Anlagenüberwachung, ALAB Energiesysteme, Mobile">
+    <meta name="author" content="ALAB Energiesysteme">
+    <meta property="og:title" content="ALAB Anlagenmonitoring Mobile">
+    <meta property="og:description" content="Professionelles Monitoring für Ihre PV-Anlage - Mobile Version">
+    <meta property="og:type" content="website">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" type="image/x-icon" href="https://static.wixstatic.com/media/cac2b9_62e2dd76694e43c3810467fa4e633c6c~mv2.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <!-- Mobile Styles -->
+    <link rel="stylesheet" href="alab-monitoring-mobile.css">
+</head>
+<body>
+    <!-- ALAB Mobile Header -->
+    <div class="alab-mh">
+        <header class="alab-mh__header" role="banner">
+            <div class="alab-mh__row">
+                <a class="alab-mh__logo" href="https://www.alabenergiesysteme.de/">
+                    <img src="https://static.wixstatic.com/media/cac2b9_62e2dd76694e43c3810467fa4e633c6c~mv2.png" alt="ALAB Logo">
+                </a>
+                <button id="alabMhOpen" class="alab-mh__hamb" aria-label="Menü öffnen">
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Drawer -->
+        <aside id="alabMhDrawer" class="alab-mh__drawer" aria-hidden="true">
+            <div class="alab-mh__backdrop" id="alabMhBackdrop"></div>
+            <nav class="alab-mh__panel">
+                <div class="alab-mh__drawer-head">
+                    <h2 class="alab-mh__drawer-title">Menü</h2>
+                    <button id="alabMhClose" class="alab-mh__drawer-close">×</button>
+                </div>
+
+                <div class="alab-mh__nav">
+                    <!-- Photovoltaik-Systeme -->
+                    <section class="alab-mh__acc">
+                        <button class="alab-mh__acc-trigger">Photovoltaik-Systeme</button>
+                        <div class="alab-mh__acc-panel">
+                            <div class="alab-mh__grid">
+                                <a class="alab-mh__item" href="https://www.alabenergiesysteme.de/gewerbliche-l%C3%B6sungen">
+                                    <img class="alab-mh__thumb" src="https://static.wixstatic.com/media/cac2b9_493bb2e306024e85848ba5ab5a484e4a~mv2.jpeg" alt="PV-Gewerbe">
+                                    <strong>PV-Gewerbe</strong><p>Effiziente Solaranlagen</p>
+                                </a>
+                                <a class="alab-mh__item" href="https://www.alabenergiesysteme.de/privatehaushalte">
+                                    <img class="alab-mh__thumb" src="https://static.wixstatic.com/media/cac2b9_f3dd33c675904fe68c45c728fa9df2dc~mv2.jpeg" alt="PV-Zuhause">
+                                    <strong>PV-Zuhause</strong><p>Energie-Unabhängigkeit</p>
+                                </a>
+                                <a class="alab-mh__item" href="https://www.alabenergiesysteme.de/freifl%C3%A4chen">
+                                    <img class="alab-mh__thumb" src="https://static.wixstatic.com/media/cac2b9_e895fac57c534346aa59c9bffb9f0513~mv2.jpeg" alt="Freiflächen">
+                                    <strong>Freiflächen</strong><p>Maximale Erträge</p>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Service & Wartung -->
+                    <section class="alab-mh__acc">
+                        <button class="alab-mh__acc-trigger">Service &amp; Wartung</button>
+                        <div class="alab-mh__acc-panel">
+                            <div class="alab-mh__grid">
+                                <a class="alab-mh__item" href="https://www.alabenergiesysteme.de/montage">
+                                    <img class="alab-mh__thumb" src="https://static.wixstatic.com/media/cac2b9_2a11ddecdc084f738eed4bb2225e907d~mv2.jpeg" alt="Montage">
+                                    <strong>Montage</strong><p>Fachgerechte Installation</p>
+                                </a>
+                                <a class="alab-mh__item" href="https://www.alabenergiesysteme.de/services">
+                                    <img class="alab-mh__thumb" src="https://static.wixstatic.com/media/cac2b9_abf62d84161a461b9f4ad63dda96fe79~mv2.jpeg" alt="Service">
+                                    <strong>Servicepakete</strong><p>Rundum-Sorglos</p>
+                                </a>
+                                <a class="alab-mh__item" href="https://www.alabenergiesysteme.de/wartung">
+                                    <img class="alab-mh__thumb" src="https://static.wixstatic.com/media/cac2b9_e34f302a6aef43e78346330231afc159~mv2.jpeg" alt="Wartung">
+                                    <strong>Wartung</strong><p>Leistung sichern</p>
+                                </a>
+                                <a class="alab-mh__item" href="https://www.alabenergiesysteme.de/monitoring">
+                                    <img class="alab-mh__thumb" src="https://static.wixstatic.com/media/cac2b9_e7e16d55c83c449987545f0e031c055b~mv2.jpeg" alt="Monitoring">
+                                    <strong>Monitoring</strong><p>Performance im Blick</p>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <a class="alab-mh__single" href="https://www.alabenergiesysteme.de/kontakt">Kontakt</a>
+                    <div class="alab-mh__cta"><a class="alab-mh__btn" href="https://www.alabenergiesysteme.de/angeboteinholen">Angebot einholen</a></div>
+                </div>
+            </nav>
+        </aside>
+    </div>
+
+    <!-- Hero Section Mobile -->
+    <section id="hero" class="hero-mobile">
+        <div class="hero-badge">ANLAGENMONITORING</div>
+        <h1 class="hero-title">
+            Anlagenmonitoring: 
+            <span class="highlight-gold">Proaktiv.</span>
+            <span class="highlight-blue">Messbar.</span>
+            <span class="highlight-gold">Sicher.</span>
+        </h1>
+        <p class="hero-desc">
+            Live-Daten zu <b>Produktion</b>, <b>Verbrauch</b> & <b>Autarkie</b>, 
+            intelligente Alarme, Reports & KPIs.
+        </p>
+        
+        <div class="platform-chips">
+            <div class="platform-chip">
+                <i class="fas fa-solar-panel"></i>
+                <span>SMA Energy</span>
+            </div>
+            <div class="platform-chip">
+                <i class="fas fa-sun"></i>
+                <span>Fronius</span>
+            </div>
+            <div class="platform-chip">
+                <i class="fas fa-cloud-sun"></i>
+                <span>Sungrow</span>
+            </div>
+            <div class="platform-chip">
+                <i class="fas fa-bolt"></i>
+                <span>Huawei</span>
+            </div>
+            <div class="platform-chip">
+                <i class="fas fa-chart-line"></i>
+                <span>SolarEdge</span>
+            </div>
+        </div>
+
+        <button class="hero-cta" onclick="showContactModal()">Monitoring anfragen</button>
+    </section>
+
+    <!-- Functions Section Mobile -->
+    <section id="functions" class="section">
+        <span class="section-badge">FUNKTIONEN</span>
+        <h2 class="section-title">Alles Relevante kompakt</h2>
+        
+        <div class="swiper mobile-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="function-card-mobile">
+                        <img src="https://static.wixstatic.com/media/cac2b9_5d715b46b3a846b8b9675ec93de48753~mv2.png" alt="Live-Daten">
+                        <div class="card-content">
+                            <h3>Live-Daten & Prognosen</h3>
+                            <p>Produktion, Verbrauch, Autarkie inkl. Wetter-Forecast.</p>
+                            <div class="card-features">
+                                <span>✓ Echtzeitüberwachung</span>
+                                <span>✓ Wetterbasierte Prognosen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-slide">
+                    <div class="function-card-mobile">
+                        <img src="https://static.wixstatic.com/media/cac2b9_97de3f87233d4cd39b56e77451c3a997~mv2.png" alt="Alarmierung">
+                        <div class="card-content">
+                            <h3>Alarmierung & Ticketing</h3>
+                            <p>Automatische Weitergabe, SLAs & Ereignis-Historie.</p>
+                            <div class="card-features">
+                                <span>✓ Multi-Channel Alerts</span>
+                                <span>✓ SLA-Tracking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="function-card-mobile">
+                        <img src="https://static.wixstatic.com/media/cac2b9_2c7c1e1f7174431289fbff0288f6b2f5~mv2.png" alt="Stringanalyse">
+                        <div class="card-content">
+                            <h3>Modul-/Stringanalyse</h3>
+                            <p>Wenn Portal/Hardware es unterstützt.</p>
+                            <div class="card-features">
+                                <span>✓ String-Level Monitoring</span>
+                                <span>✓ Defekt-Erkennung</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="function-card-mobile">
+                        <img src="https://static.wixstatic.com/media/cac2b9_90d9ffa77f6045a2972e51d6541e8568~mv2.png" alt="Reports">
+                        <div class="card-content">
+                            <h3>Reports & KPIs</h3>
+                            <p>Monatliche Reports inkl. PR & Verfügbarkeit.</p>
+                            <div class="card-features">
+                                <span>✓ PDF/CSV Export</span>
+                                <span>✓ Automatische Reports</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="function-card-mobile">
+                        <img src="https://static.wixstatic.com/media/cac2b9_dab501a139f149c1a1c7c86ad3280954~mv2.png" alt="Flotten">
+                        <div class="card-content">
+                            <h3>Flotten-Monitoring</h3>
+                            <p>Portfolio-Ansicht, Filter nach Standort.</p>
+                            <div class="card-features">
+                                <span>✓ Zentrale Übersicht</span>
+                                <span>✓ Multi-Site Management</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="function-card-mobile">
+                        <img src="https://static.wixstatic.com/media/cac2b9_b547109d9b844ae49cc2d8f566a8b72a~mv2.png" alt="Integration">
+                        <div class="card-content">
+                            <h3>Sektoren-Integration</h3>
+                            <p>Speicher, Wallbox, Wärmepumpe.</p>
+                            <div class="card-features">
+                                <span>✓ Ganzheitliche Ansicht</span>
+                                <span>✓ Sektorenkopplung</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Dataflow Section Mobile -->
+    <section id="dataflow" class="section">
+        <span class="section-badge">DATENFLUSS</span>
+        <h2 class="section-title">Vom Sensor zur Entscheidung</h2>
+        
+        <div class="dataflow-mobile">
+            <div class="flow-node">
+                <div class="node-icon"><i class="fas fa-microchip"></i></div>
+                <h4>Sensorik / Zähler</h4>
+                <p>WR, Meter, Strings</p>
+            </div>
+            <div class="flow-arrow-mobile">↓</div>
+            
+            <div class="flow-node">
+                <div class="node-icon"><i class="fas fa-cloud"></i></div>
+                <h4>Gateway/Portal</h4>
+                <p>z. B. iSolarCloud</p>
+            </div>
+            <div class="flow-arrow-mobile">↓</div>
+            
+            <div class="flow-node">
+                <div class="node-icon"><i class="fas fa-server"></i></div>
+                <h4>Datenverarbeitung</h4>
+                <p>Validierung/Alarme</p>
+            </div>
+            <div class="flow-arrow-mobile">↓</div>
+            
+            <div class="flow-node">
+                <div class="node-icon"><i class="fas fa-desktop"></i></div>
+                <h4>Dashboard & Apps</h4>
+                <p>Reports/Insights</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Section Mobile -->
+    <section id="cases" class="section">
+        <span class="section-badge">PRAXIS-CASES</span>
+        <h2 class="section-title">Konkrete Beispiele</h2>
+        
+        <div class="swiper mobile-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="case-card-mobile">
+                        <img src="https://static.wixstatic.com/media/cac2b9_b786bf1dc3f74848ba88163ce0d10e93~mv2.png" alt="Handel">
+                        <div class="case-content">
+                            <div class="case-header">
+                                <i class="fas fa-store"></i>
+                                <h3>Handelsfläche · 99 kWp</h3>
+                            </div>
+                            <div class="case-item">
+                                <strong>Problem:</strong>
+                                <p>Unterleistung eines Strings.</p>
+                            </div>
+                            <div class="case-item">
+                                <strong>Lösung:</strong>
+                                <p>String-Analyse & Thermografie.</p>
+                            </div>
+                            <div class="case-item">
+                                <strong>Ergebnis:</strong>
+                                <p>+8% Ertrag im Folgemonat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="case-card-mobile">
+                        <img src="https://static.wixstatic.com/media/cac2b9_a7242c63049343d58711eacb1939187a~mv2.png" alt="Produktion">
+                        <div class="case-content">
+                            <div class="case-header">
+                                <i class="fas fa-industry"></i>
+                                <h3>Produktion · 500 kWp</h3>
+                            </div>
+                            <div class="case-item">
+                                <strong>Problem:</strong>
+                                <p>Lastspitzen & Blindleistungskosten.</p>
+                            </div>
+                            <div class="case-item">
+                                <strong>Lösung:</strong>
+                                <p>Alarmregeln + Peak-Shaving.</p>
+                            </div>
+                            <div class="case-item">
+                                <strong>Ergebnis:</strong>
+                                <p>−18% Lastspitzen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="case-card-mobile">
+                        <img src="https://static.wixstatic.com/media/cac2b9_ee2441013e6a495e877882d194e98be9~mv2.png" alt="Logistik">
+                        <div class="case-content">
+                            <div class="case-header">
+                                <i class="fas fa-truck"></i>
+                                <h3>Logistik · 1 MWp</h3>
+                            </div>
+                            <div class="case-item">
+                                <strong>Problem:</strong>
+                                <p>WR-Abregelungen bei Spitzen.</p>
+                            </div>
+                            <div class="case-item">
+                                <strong>Lösung:</strong>
+                                <p>Parameter-Tuning & Monitoring.</p>
+                            </div>
+                            <div class="case-item">
+                                <strong>Ergebnis:</strong>
+                                <p>+3–5% Jahresertrag.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Packages Section Mobile -->
+    <section id="packages" class="section">
+        <span class="section-badge">PAKETE</span>
+        <h2 class="section-title">Ihr passendes Paket</h2>
+        
+        <div class="packages-grid">
+            <div class="package-card">
+                <div class="package-name">Basic</div>
+                <div class="package-price">ab 49€/Monat</div>
+                <ul class="package-features">
+                    <li>Live-Dashboard</li>
+                    <li>Basis-Alarme (E-Mail)</li>
+                    <li>Monatsreport</li>
+                    <li>1 Standort</li>
+                </ul>
+                <button class="package-btn" onclick="showContactModal()">Anfragen</button>
+            </div>
+
+            <div class="package-card featured">
+                <div class="package-name">Plus</div>
+                <div class="package-price">ab 149€/Monat</div>
+                <ul class="package-features">
+                    <li>Alles aus Basic</li>
+                    <li>SMS/WhatsApp-Alarme</li>
+                    <li>String-Monitoring</li>
+                    <li>Ticketing-System</li>
+                    <li>Bis 5 Standorte</li>
+                </ul>
+                <button class="package-btn" onclick="showContactModal()">Anfragen</button>
+            </div>
+
+            <div class="package-card">
+                <div class="package-name">Pro</div>
+                <div class="package-price">Individuell</div>
+                <ul class="package-features">
+                    <li>Alles aus Plus</li>
+                    <li>API-Zugang</li>
+                    <li>Custom Reports</li>
+                    <li>SLA-Garantien</li>
+                    <li>Unbegrenzte Standorte</li>
+                </ul>
+                <button class="package-btn" onclick="showContactModal()">Anfragen</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section Mobile -->
+    <section id="faq" class="section">
+        <span class="section-badge">FAQ</span>
+        <h2 class="section-title">Häufige Fragen</h2>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Welche Portale werden unterstützt?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>SMA, Fronius, Sungrow, Huawei, SolarEdge. Tiefe der Funktionen variiert je Portal/Hardware.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Ist Modul-Monitoring immer möglich?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Nur wenn die Komponenten das liefern (z. B. SolarEdge) – sonst String/WR-Ebene.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Gibt es SLAs?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Ja – Reaktions- und Entstörzeiten werden projektspezifisch vereinbart.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Mobile -->
+    <footer class="footer-mobile">
+        <h3>Bereit für smartes Monitoring?</h3>
+        <p>Lassen Sie uns Ihre Anlage optimieren.</p>
+        <button class="footer-cta" onclick="showContactModal()">Jetzt starten</button>
+    </footer>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#hero" class="bottom-nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Start</span>
+        </a>
+        <a href="#functions" class="bottom-nav-item">
+            <i class="fas fa-th"></i>
+            <span>Funktionen</span>
+        </a>
+        <a href="#cases" class="bottom-nav-item">
+            <i class="fas fa-briefcase"></i>
+            <span>Cases</span>
+        </a>
+        <a href="#packages" class="bottom-nav-item">
+            <i class="fas fa-tag"></i>
+            <span>Pakete</span>
+        </a>
+        <a href="#faq" class="bottom-nav-item">
+            <i class="fas fa-question-circle"></i>
+            <span>FAQ</span>
+        </a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="alab-monitoring-mobile.js"></script>
+</body>
+</html>
