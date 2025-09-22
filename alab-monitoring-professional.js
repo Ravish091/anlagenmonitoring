@@ -523,3 +523,80 @@ window.addEventListener('scroll', debounce(() => {
     // Update navigation on scroll
     document.dispatchEvent(new Event('updateNav'));
 }, 100));
+// ===== ARIA-Feedback für Hover/Focus (Öffnen läuft per CSS) =====
+(function () {
+  const triggers = document.querySelectorAll('.has-megamenu > a');
+  triggers.forEach((a) => {
+    const li = a.parentElement;
+    a.addEventListener('mouseenter', () => a.setAttribute('aria-expanded', 'true'));
+    a.addEventListener('mouseleave', () => a.setAttribute('aria-expanded', 'false'));
+    li.addEventListener('focusin', () => a.setAttribute('aria-expanded', 'true'));
+    li.addEventListener('focusout', () => a.setAttribute('aria-expanded', 'false'));
+  });
+})();
+
+// ===== Link-Targeting für iFrame-Usecase =====
+// Interne Links im selben Tab/_top, externe im neuen Tab
+(function () {
+  const INTERNAL_DOMAINS = ['alabenergiesysteme.de'];
+
+  const isInternal = (urlStr) => {
+    try {
+      const u = new URL(urlStr, location.href);
+      if (u.protocol === 'mailto:' || u.protocol === 'tel:') return false;
+      const host = u.hostname;
+      return (
+        host === location.hostname ||
+        INTERNAL_DOMAINS.some((d) => host === d || host.endsWith('.' + d))
+      );
+    } catch {
+      return false;
+    }
+  };
+
+  function retarget(a) {
+    const href = a.getAttribute('href') || '';
+    if (!href || href.startsWith('#') || a.hasAttribute('download')) return;
+
+    if (isInternal(href)) {
+      a.setAttribute('target', '_top');
+      a.removeAttribute('rel');
+    } else {
+      if (!a.hasAttribute('target')) a.setAttribute('target', '_blank');
+      if (!a.hasAttribute('rel')) a.setAttribute('rel', 'noopener');
+    }
+  }
+
+  // Bestehende Links
+  document.querySelectorAll('a[href]').forEach(retarget);
+
+  // Zukünftige Links (SPA / dynamisch)
+  new MutationObserver((mutations) =>
+    mutations.forEach((m) =>
+      m.addedNodes.forEach((node) => {
+        if (node.nodeType !== 1) return;
+        if (node.matches?.('a[href]')) retarget(node);
+        node.querySelectorAll?.('a[href]').forEach(retarget);
+      })
+    )
+  ).observe(document.documentElement, { childList: true, subtree: true });
+
+  // Sicherheits-Fallback bei Klick (stellt _top vor Navigation sicher)
+  document.addEventListener(
+    'click',
+    (e) => {
+      const a = e.target.closest?.('a[href]');
+      if (!a) return;
+      const href = a.getAttribute('href') || '';
+      if (
+        !href ||
+        href.startsWith('#') ||
+        href.startsWith('mailto:') ||
+        href.startsWith('tel:')
+      )
+        return;
+      if (isInternal(href)) a.target = '_top';
+    },
+    true
+  );
+})();
